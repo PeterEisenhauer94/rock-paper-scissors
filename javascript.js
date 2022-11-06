@@ -11,7 +11,7 @@ function getComputerChoice(){
 }
 
 function rpsLogic(playerSelection,computerSelection){
-    switch(playerSelection){
+    switch(playerSelection.toLowerCase()){
         case 'rock':
             if(computerSelection==='rock'){
                 console.log('Tie game! Try again...');
@@ -21,12 +21,14 @@ function rpsLogic(playerSelection,computerSelection){
                 break;
             } else {
                 console.log('Rock beats Scissors! You win!!!');
+                playerWins += 1;
                 break;
             }
         case 'paper':
             if(computerSelection==='rock'){
                 console.log('Paper beats Rock! You win!!!');
-                break;
+                playerWins += 1;
+                break
             } else if (computerSelection==='paper'){
                 console.log('Tie game! Try again...');
                 break;
@@ -40,6 +42,7 @@ function rpsLogic(playerSelection,computerSelection){
                 break;
             } else if (computerSelection==='paper'){
                 console.log('Scissors beats Paper! You win!!!');
+                playerWins += 1;
                 break;
             } else {
                 console.log('Tie game! Try again...');
@@ -48,7 +51,6 @@ function rpsLogic(playerSelection,computerSelection){
     }
 }
 function game(){
-    let playerWins = 0;
     for(let i=0;i<5;i++){
         
         let playerSelection = prompt("Rock, Paper, or Scissors! It's time to choose!");
@@ -59,10 +61,17 @@ function game(){
             playerSelection.toLowerCase() === 'scissors'){
                 rpsLogic(playerSelection,computerSelection);
             } else {
-                console.log('please choose a valid choice');
+                console.log('Please enter a valid choice!');
             }
+        
+        if (playerWins===1){
+            console.log('You have won ' + playerWins +' time!');
+        } else {
+            console.log('You have won ' + playerWins +' times!');
+        }
     }
 }
 
-//testing
+//main
+let playerWins = 0;
 game();
