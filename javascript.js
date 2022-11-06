@@ -14,32 +14,55 @@ function rpsLogic(playerSelection,computerSelection){
     switch(playerSelection){
         case 'rock':
             if(computerSelection==='rock'){
-                return 'Tie game! Try again...';
+                console.log('Tie game! Try again...');
+                break;
             } else if (computerSelection==='paper'){
-                return 'Paper beats Rock! You lose...';
+                console.log('Paper beats Rock! You lose...');
+                break;
             } else {
-                return 'Rock beats Scissors! You win!!!';
+                console.log('Rock beats Scissors! You win!!!');
+                break;
             }
         case 'paper':
             if(computerSelection==='rock'){
-                return 'Paper beats Rock! You win!!!';
+                console.log('Paper beats Rock! You win!!!');
+                break;
             } else if (computerSelection==='paper'){
-                return 'Tie game! Try again...';
+                console.log('Tie game! Try again...');
+                break;
             } else {
-                return 'Scissors beats Paper! You lose...';
+                console.log('Scissors beats Paper! You lose...');
+                break;
             }
         case 'scissors':
             if(computerSelection==='rock'){
-                return 'Rock beats Scissors! You lose...';
+                console.log('Rock beats Scissors! You lose...');
+                break;
             } else if (computerSelection==='paper'){
-                return 'Scissors beats Paper! You win!!!';
+                console.log('Scissors beats Paper! You win!!!');
+                break;
             } else {
-                return 'Tie game! Try again...';
+                console.log('Tie game! Try again...');
+                break;
             }
-
+    }
+}
+function game(){
+    let playerWins = 0;
+    for(let i=0;i<5;i++){
+        
+        let playerSelection = prompt("Rock, Paper, or Scissors! It's time to choose!");
+        let computerSelection = getComputerChoice();
+        
+        if (playerSelection.toLowerCase() === 'rock' ||
+            playerSelection.toLowerCase() === 'paper' ||
+            playerSelection.toLowerCase() === 'scissors'){
+                rpsLogic(playerSelection,computerSelection);
+            } else {
+                console.log('please choose a valid choice');
+            }
     }
 }
 
-const playerSelection = 'rock';
-const computerSelection = getComputerChoice();
-console.log(rpsLogic(playerSelection,computerSelection));
+//testing
+game();
