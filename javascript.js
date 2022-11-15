@@ -72,6 +72,31 @@ function game(){
     }
 }
 
+
+//DOM objects
+const rockButton = document.querySelector('#rock-button');
+const paperButton = document.querySelector('#paper-button');
+const scissorsButton = document.querySelector('#scissors-button');
+
+//events
+
+let playerWins = 0; //win count
+
+
+rockButton.addEventListener('click', function () {
+    let computerSelection = getComputerChoice();
+    rpsLogic('rock',computerSelection);
+});
+
+paperButton.addEventListener('click', function(){
+    let computerSelection = getComputerChoice();
+    rpsLogic('paper',computerSelection);
+})
+scissorsButton.addEventListener('click', function(){
+    let computerSelection = getComputerChoice();
+    rpsLogic('scissors',computerSelection);
+})
+
+
 //main
-let playerWins = 0;
-game();
+//game();
