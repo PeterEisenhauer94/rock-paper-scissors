@@ -12,7 +12,7 @@ function getComputerChoice(){
 
 function rpsLogic(playerSelection,computerSelection){
     if(playerWins===5 || computerWins === 5){
-        return;
+        ;
     }
     switch(playerSelection.toLowerCase()){
         case 'rock':
@@ -89,6 +89,8 @@ const resultText = document.createElement('p');
 const score =  document.createElement('p');
 results.appendChild(resultText);
 results.appendChild(score);
+
+const playAgain = document.querySelector('#play-again');
 
 //events
 
