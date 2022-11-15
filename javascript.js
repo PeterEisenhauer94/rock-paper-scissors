@@ -11,6 +11,9 @@ function getComputerChoice(){
 }
 
 function rpsLogic(playerSelection,computerSelection){
+    if(playerWins===5 || computerWins === 5){
+        return;
+    }
     switch(playerSelection.toLowerCase()){
         case 'rock':
             if(computerSelection==='rock'){
@@ -18,6 +21,7 @@ function rpsLogic(playerSelection,computerSelection){
                 break;
             } else if (computerSelection==='paper'){
                 console.log('Paper beats Rock! You lose...');
+                computerWins += 1;
                 break;
             } else {
                 console.log('Rock beats Scissors! You win!!!');
@@ -34,11 +38,13 @@ function rpsLogic(playerSelection,computerSelection){
                 break;
             } else {
                 console.log('Scissors beats Paper! You lose...');
+                computerWins+=1;
                 break;
             }
         case 'scissors':
             if(computerSelection==='rock'){
                 console.log('Rock beats Scissors! You lose...');
+                computerWins+=1;
                 break;
             } else if (computerSelection==='paper'){
                 console.log('Scissors beats Paper! You win!!!');
@@ -78,25 +84,30 @@ const rockButton = document.querySelector('#rock-button');
 const paperButton = document.querySelector('#paper-button');
 const scissorsButton = document.querySelector('#scissors-button');
 
+const results = document.querySelector('#results-container');
+const resultText = document.createElement('p');
+const score =  document.createElement('p');
+results.appendChild(resultText);
+results.appendChild(score);
+
 //events
 
-let playerWins = 0; //win count
+let playerWins = 0; // player win count
+let computerWins = 0;
 
 
 rockButton.addEventListener('click', function () {
     let computerSelection = getComputerChoice();
     rpsLogic('rock',computerSelection);
+    score.textContent = `Player Wins: ${playerWins} `+
+                        `Computer Wins: ${computerWins}`;
 });
 
 paperButton.addEventListener('click', function(){
     let computerSelection = getComputerChoice();
     rpsLogic('paper',computerSelection);
-})
+});
 scissorsButton.addEventListener('click', function(){
     let computerSelection = getComputerChoice();
     rpsLogic('scissors',computerSelection);
-})
-
-
-//main
-//game();
+});
