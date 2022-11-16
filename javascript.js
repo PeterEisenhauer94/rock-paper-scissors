@@ -11,8 +11,10 @@ function getComputerChoice(){
 }
 
 function rpsLogic(playerSelection,computerSelection){
-    if(playerWins===5 || computerWins === 5){
-        ;
+
+
+    if (buttonDisabled === true){
+        return;
     }
     switch(playerSelection.toLowerCase()){
         case 'rock':
@@ -22,16 +24,19 @@ function rpsLogic(playerSelection,computerSelection){
             } else if (computerSelection==='paper'){
                 console.log('Paper beats Rock! You lose...');
                 computerWins += 1;
+                if(playerWins === 5||computerWins === 5) winState();
                 break;
             } else {
                 console.log('Rock beats Scissors! You win!!!');
                 playerWins += 1;
+                if(playerWins === 5||computerWins === 5) winState();
                 break;
             }
         case 'paper':
             if(computerSelection==='rock'){
                 console.log('Paper beats Rock! You win!!!');
                 playerWins += 1;
+                if(playerWins === 5||computerWins === 5) winState();
                 break
             } else if (computerSelection==='paper'){
                 console.log('Tie game! Try again...');
@@ -39,16 +44,19 @@ function rpsLogic(playerSelection,computerSelection){
             } else {
                 console.log('Scissors beats Paper! You lose...');
                 computerWins+=1;
+                if(playerWins === 5||computerWins === 5) winState();
                 break;
             }
         case 'scissors':
             if(computerSelection==='rock'){
                 console.log('Rock beats Scissors! You lose...');
                 computerWins+=1;
+                if(playerWins === 5||computerWins === 5) winState();
                 break;
             } else if (computerSelection==='paper'){
                 console.log('Scissors beats Paper! You win!!!');
                 playerWins += 1;
+                if(playerWins === 5||computerWins === 5) winState();
                 break;
             } else {
                 console.log('Tie game! Try again...');
@@ -56,28 +64,11 @@ function rpsLogic(playerSelection,computerSelection){
             }
     }
 }
-function game(){
-    for(let i=0;i<5;i++){
-        
-        let playerSelection = prompt("Rock, Paper, or Scissors! It's time to choose!");
-        let computerSelection = getComputerChoice();
-        
-        if (playerSelection.toLowerCase() === 'rock' ||
-            playerSelection.toLowerCase() === 'paper' ||
-            playerSelection.toLowerCase() === 'scissors'){
-                rpsLogic(playerSelection,computerSelection);
-            } else {
-                console.log('Please enter a valid choice!');
-            }
-        
-        if (playerWins===1){
-            console.log('You have won ' + playerWins +' time!');
-        } else {
-            console.log('You have won ' + playerWins +' times!');
-        }
-    }
-}
 
+function winState(){
+    playAgainButton.classList.toggle('hide-button');
+    buttonDisabled = true;
+}
 
 //DOM objects
 const rockButton = document.querySelector('#rock-button');
@@ -91,9 +82,15 @@ results.appendChild(resultText);
 results.appendChild(score);
 
 const playAgain = document.querySelector('#play-again');
+const playAgainButton = document.createElement('button');
+playAgainButton.classList.toggle('hide-button');
+playAgainButton.textContent = 'Play Again';
+playAgain.appendChild(playAgainButton);
+
+
 
 //events
-
+let buttonDisabled = false;
 let playerWins = 0; // player win count
 let computerWins = 0;
 
@@ -112,4 +109,13 @@ paperButton.addEventListener('click', function(){
 scissorsButton.addEventListener('click', function(){
     let computerSelection = getComputerChoice();
     rpsLogic('scissors',computerSelection);
+});
+
+playAgainButton.addEventListener('click', function (){
+    playerWins = 0;
+    computerWins = 0;
+    buttonDisabled = false;
+    score.textContent = `Player Wins: ${playerWins} `+
+                        `Computer Wins: ${computerWins}`;
+    playAgainButton.classList.toggle('hide-button');
 });
