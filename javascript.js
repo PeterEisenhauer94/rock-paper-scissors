@@ -19,47 +19,47 @@ function rpsLogic(playerSelection,computerSelection){
     switch(playerSelection.toLowerCase()){
         case 'rock':
             if(computerSelection==='rock'){
-                console.log('Tie game! Try again...');
+                resultText.textContent ='Tie game! Try again...';
                 break;
             } else if (computerSelection==='paper'){
-                console.log('Paper beats Rock! You lose...');
+                resultText.textContent ='Paper beats Rock! You lose...';
                 computerWins += 1;
                 if(playerWins === 5||computerWins === 5) winState();
                 break;
             } else {
-                console.log('Rock beats Scissors! You win!!!');
+                resultText.textContent ='Rock beats Scissors! You win!!!';
                 playerWins += 1;
                 if(playerWins === 5||computerWins === 5) winState();
                 break;
             }
         case 'paper':
             if(computerSelection==='rock'){
-                console.log('Paper beats Rock! You win!!!');
+                resultText.textContent ='Paper beats Rock! You win!!!';
                 playerWins += 1;
                 if(playerWins === 5||computerWins === 5) winState();
                 break
             } else if (computerSelection==='paper'){
-                console.log('Tie game! Try again...');
+                resultText.textContent ='Tie game! Try again...';
                 break;
             } else {
-                console.log('Scissors beats Paper! You lose...');
+                resultText.textContent ='Scissors beats Paper! You lose...';
                 computerWins+=1;
                 if(playerWins === 5||computerWins === 5) winState();
                 break;
             }
         case 'scissors':
             if(computerSelection==='rock'){
-                console.log('Rock beats Scissors! You lose...');
+                resultText.textContent ='Rock beats Scissors! You lose...';
                 computerWins+=1;
                 if(playerWins === 5||computerWins === 5) winState();
                 break;
             } else if (computerSelection==='paper'){
-                console.log('Scissors beats Paper! You win!!!');
+                resultText.textContent ='Scissors beats Paper! You win!!!';
                 playerWins += 1;
                 if(playerWins === 5||computerWins === 5) winState();
                 break;
             } else {
-                console.log('Tie game! Try again...');
+                resultText.textContent ='Tie game! Try again...';
                 break;
             }
     }

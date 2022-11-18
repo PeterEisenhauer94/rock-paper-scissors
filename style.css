@@ -11,9 +11,6 @@ p {
     color: white;
 }
 
-#rules{
-    color: white;
-}
 
 #button-container, #results-container, #play-again{
     display: flex;
@@ -26,6 +23,12 @@ p {
     padding: 5px 20px 5px 20px;
     margin: 10%;
     background-color: #A7BCB9;
+}
+
+#results-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hide-button{
