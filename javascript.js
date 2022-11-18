@@ -105,10 +105,14 @@ rockButton.addEventListener('click', function () {
 paperButton.addEventListener('click', function(){
     let computerSelection = getComputerChoice();
     rpsLogic('paper',computerSelection);
+    score.textContent = `Player Wins: ${playerWins} `+
+                        `Computer Wins: ${computerWins}`;
 });
 scissorsButton.addEventListener('click', function(){
     let computerSelection = getComputerChoice();
     rpsLogic('scissors',computerSelection);
+    score.textContent = `Player Wins: ${playerWins} `+
+                        `Computer Wins: ${computerWins}`;
 });
 
 playAgainButton.addEventListener('click', function (){
